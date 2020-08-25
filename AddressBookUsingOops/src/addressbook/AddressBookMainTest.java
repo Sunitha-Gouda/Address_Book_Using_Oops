@@ -3,8 +3,12 @@ package addressbook;
 import java.util.Scanner;
 
 public class AddressBookMainTest {
-	public static void main(String args[]) {
+	public static void main(String args[])throws Throwable {
+		//Object for two Implementation class
+		AddressBookManagerImplementation addressBookManagerImplementation=new AddressBookManagerImplementation();
 		Scanner sc=new Scanner (System.in);
+		
+		System.out.println("******Welcome To Address Book Application*****");
 		while(true) {
 			System.out.println("\t\t1) Create New Address Book\n"
 								+"\t\t2) Open New Address Book \n"
@@ -18,7 +22,7 @@ public class AddressBookMainTest {
 			int choiceOption=sc.nextInt();
 			switch(choiceOption) {
 			case 1:
-				System.out.println("One");
+				addressBookManagerImplementation.newAddressBook();
 				break;
 			case 2:
 				System.out.println("Two");
