@@ -9,7 +9,8 @@ public interface AddressBookInterface {
 	ArrayList<Person> editPerson(String Filename);
 	ArrayList<Person> deletePerson(String Filename);
 	ArrayList<Person> searchPerson(String Filename) throws Throwable;
-	public void sortByZip();
+	ArrayList<Person> sortByZip(String Filename);
 	public void sortByName();
 	public void display();
+	
 }

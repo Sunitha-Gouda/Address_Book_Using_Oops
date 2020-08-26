@@ -1,6 +1,8 @@
 package addressbook;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import interfaces.AddressBookInterface;
@@ -13,7 +15,7 @@ public class AddressBookImplementation  implements AddressBookInterface {
 		int  zipcode;
 		String phoneNumber;
 		Scanner sc=new Scanner(System.in);
-		ArrayList<Person> personarraylist=new ArrayList<Person>();
+		ArrayList<Person> addressBookList=new ArrayList<Person>();
 		Person person;
 		ReadWrite RW=new ReadWrite();
 
@@ -132,9 +134,22 @@ public class AddressBookImplementation  implements AddressBookInterface {
 	}
 
 	@Override
-	public void sortByZip() {
+	public ArrayList<Person> sortByZip(String Filename) {
 		// TODO Auto-generated method stub
-		
+		ArrayList<Person> addressBookList=null;
+		try {
+			addressBookList=RW.Readcsv(Filename);
+
+			} catch (Throwable e) {
+			e.printStackTrace();
+			}
+		     Comparator<Person> personzipComparator=Comparator.comparingInt(Person :: getZipcode);
+			 Collections.sort(addressBookList,personzipComparator);
+			 	for(Person p:addressBookList) {
+			        System.out.println(p.toString());
+			 	}
+			 	System.out.println("Sorted According to ZipCode");
+			 	return addressBookList;
 	}
 
 	@Override
