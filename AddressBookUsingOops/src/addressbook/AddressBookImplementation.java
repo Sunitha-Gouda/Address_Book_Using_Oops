@@ -172,9 +172,21 @@ public class AddressBookImplementation  implements AddressBookInterface {
 	
 
 	@Override
-	public void display() {
+	public void display(String Filename) {
 		// TODO Auto-generated method stub
+		ArrayList<Person> addressbook = null;
+		try {
+		addressbook = RW.Readcsv(Filename);
+		} catch (Throwable e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		        for(Person displayaddressbook:addressbook) {
+		        System.out.println(displayaddressbook.toString());
+		        }
+
+
+		}
 		
 	}
 	
-}

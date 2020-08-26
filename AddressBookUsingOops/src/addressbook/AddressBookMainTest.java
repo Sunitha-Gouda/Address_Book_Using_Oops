@@ -61,7 +61,7 @@ public class AddressBookMainTest {
 					addressbook=addressBookImplementation.sortByName(Filename);
 					break;
 				case 7:
-					System.out.println("Seven");
+					addressBookImplementation.display(Filename);
 					break;
 				default :
 					System.out.println("Enter choice correctly!!!");

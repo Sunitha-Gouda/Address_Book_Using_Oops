@@ -11,7 +11,7 @@ public interface AddressBookInterface {
 	ArrayList<Person> searchPerson(String Filename) throws Throwable;
 	ArrayList<Person> sortByZip(String Filename);
 	ArrayList<Person> sortByName(String Filename);
-	public void display();
+	public void display(String Filename);
 	
 	
 }
