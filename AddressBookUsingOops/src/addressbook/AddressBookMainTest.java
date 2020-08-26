@@ -90,7 +90,7 @@ public class AddressBookMainTest {
 				addressBookManagerImplementation.saveasAddressBook(oldFileName,newFileName);
 				break;
 			case 5:
-				System.out.println("Five");
+				addressBookManagerImplementation.closeAddressBook();
 				break;
 			case 6:
 				System.out.println("Six");

@@ -99,7 +99,20 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 	@Override
 	public void closeAddressBook() {
 			// TODO Auto-generated method stub
-		
+		try
+		{
+		String s="hello!!!!!!!";
+		Scanner scanner=new Scanner(s);
+		System.out.println("Scanner:"+scanner.nextLine());
+		scanner.close();
+		System.out.println("Closing the window!!!!!");
+		System.out.println("Trying to use scanner"+"Aftr closing.");
+		System.out.println(scanner.nextLine());
+		}
+		catch (Exception e) {
+			System.out.println("Exception thrown:\n" + e);
+		}
+		return;
 	}
 	
 	@Override
