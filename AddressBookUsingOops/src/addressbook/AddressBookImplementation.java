@@ -88,10 +88,26 @@ public class AddressBookImplementation  implements AddressBookInterface {
 	
 	
 	@Override
-	public void deletePerson() {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<Person> deletePerson(String Filename) {
+		ArrayList<Person> delPerson=null;
+		try {
+			delPerson = RW.Readcsv(Filename);
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
+		System.out.println("Enter the  phoneNumber to delete person ");
+		String PhoneNumber=sc.next();
+		System.out.println("PhoneNumber=" +PhoneNumber);
+		for(int i=0;i<delPerson.size();i++) {
+			if(PhoneNumber.equalsIgnoreCase(delPerson.get(i).getPhoneNumber())) {
+				System.out.println(delPerson.get(i));
+				delPerson.remove(i);
+			}
+		}
+		System.out.println("Entered Phonenumber along with data has been Deleted!!!!");
+		return delPerson;
 	}
+	
 
 	@Override
 	public void searchPerson() {

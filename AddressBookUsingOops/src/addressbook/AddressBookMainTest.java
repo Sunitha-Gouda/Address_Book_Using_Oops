@@ -49,7 +49,7 @@ public class AddressBookMainTest {
 					addressbook=addressBookImplementation.editPerson(Filename);
 					break;
 				case 3:
-					System.out.println("Three");
+					addressbook=addressBookImplementation.deletePerson(Filename);
 					break;
 				case 4:
 					System.out.println("Four");
