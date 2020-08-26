@@ -1,5 +1,6 @@
 package addressbook;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -76,7 +77,17 @@ public class AddressBookMainTest {
 				System.out.println("Your file has been saved ");
 				break;
 			case 4:
-				System.out.println("Four");
+				System.out.println("List of Files Present ");
+				File f=new File("E:\\Newfolder\\AddressBook\\src\\");
+				String[] s=f.list();
+				for (String string1 : s) {
+					System.out.println(string1);
+				}
+				System.out.println("old  file name");
+				String oldFileName=sc.next();
+				System.out.println("new file  name");
+				String newFileName=sc.next();
+				addressBookManagerImplementation.saveasAddressBook(oldFileName,newFileName);
 				break;
 			case 5:
 				System.out.println("Five");

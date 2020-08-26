@@ -84,19 +84,24 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 		
 	}
 
-	
 	@Override
-	public void saveasAddressBook() {
+	public void saveasAddressBook(String oldFileName,String newFileName) {
 		// TODO Auto-generated method stub
-		
+	String file1="E:\\Newfolder\\AddressBook\\src\\"+oldFileName;
+	String file2="E:\\Newfolder\\AddressBook\\src\\"+newFileName;
+			File oldName=new File(file1);
+			File newName=new File(file2);
+			if(oldName.renameTo(newName))
+			System.out.println("File renamed and content has been copied");
 	}
+	
 
 	@Override
 	public void closeAddressBook() {
-		// TODO Auto-generated method stub
+			// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void quit() {
 		// TODO Auto-generated method stub
