@@ -58,7 +58,7 @@ public class AddressBookMainTest {
 					addressbook=addressBookImplementation.sortByZip(Filename);
 					break;
 				case 6:
-					System.out.println("Six");
+					addressbook=addressBookImplementation.sortByName(Filename);
 					break;
 				case 7:
 					System.out.println("Seven");

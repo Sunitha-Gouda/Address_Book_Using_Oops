@@ -133,6 +133,7 @@ public class AddressBookImplementation  implements AddressBookInterface {
 		return person;
 	}
 
+	
 	@Override
 	public ArrayList<Person> sortByZip(String Filename) {
 		// TODO Auto-generated method stub
@@ -145,18 +146,30 @@ public class AddressBookImplementation  implements AddressBookInterface {
 			}
 		     Comparator<Person> personzipComparator=Comparator.comparingInt(Person :: getZipcode);
 			 Collections.sort(addressBookList,personzipComparator);
-			 	for(Person p:addressBookList) {
-			        System.out.println(p.toString());
+			 	for(Person sortbyzipcode:addressBookList) {
+			        System.out.println(sortbyzipcode.toString());
 			 	}
-			 	System.out.println("Sorted According to ZipCode");
+			 	System.out.println("!!!!Sorted According to ZipCode!!!!");
 			 	return addressBookList;
 	}
 
+	
 	@Override
-	public void sortByName() {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<Person> sortByName(String Filename) {
+		ArrayList<Person> sortByName=null;
+		try {
+			sortByName = RW.Readcsv(Filename);
+		} catch (Throwable e) {
+		e.printStackTrace();
+		}
+		System.out.println("!!!!!!Sorted According to Alphabetical Order!!!!!");
+		Collections.sort(sortByName,(o1,o2) ->o1.getFirstName().compareToIgnoreCase(o2.getFirstName()));
+			for(Person sortname:sortByName) {
+				System.out.println(sortname.toString());
+			}
+			return sortByName;
 	}
+	
 
 	@Override
 	public void display() {
