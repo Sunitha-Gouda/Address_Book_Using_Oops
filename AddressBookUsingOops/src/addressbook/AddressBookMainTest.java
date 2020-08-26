@@ -46,7 +46,7 @@ public class AddressBookMainTest {
 					addressbook=addressBookImplementation.addPerson(Filename);
 					break;
 				case 2:
-					System.out.println("Two");
+					addressbook=addressBookImplementation.editPerson(Filename);
 					break;
 				case 3:
 					System.out.println("Three");
@@ -89,7 +89,7 @@ public class AddressBookMainTest {
 				return;
 				}
 			
-}
+         	}
 		
-}
+	}
 }

@@ -6,7 +6,7 @@ import addressbook.Person;
 
 public interface AddressBookInterface {
 	ArrayList<Person> addPerson(String Filename);
-	public void editPerson();
+	ArrayList<Person> editPerson(String Filename);
 	public void deletePerson();
 	public void searchPerson();
 	public void sortByZip();
