@@ -1,15 +1,55 @@
 package addressbook;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import interfaces.AddressBookInterface;
 
 public class AddressBookImplementation  implements AddressBookInterface {
+		String firstName;
+		String lastName;
+		String city;
+		String state;
+		int  zipcode;
+		String phoneNumber;
+		Scanner sc=new Scanner(System.in);
+		ArrayList<Person> personarraylist=new ArrayList<Person>();
+		Person person;
+		ReadWrite RW=new ReadWrite();
 
-	@Override
-	public void addPerson() {
-		// TODO Auto-generated method stub
+		@Override
+		public ArrayList<Person> addPerson(String Filename) {
+			ArrayList<Person> person=null;
+			try {
+				person = RW.Readcsv(Filename);
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.out.println("How many person's data you want to add???");
+			int numOfPerson=sc.nextInt();
+			for (int i = 0; i < numOfPerson; i++) {
+				System.out.println("Enter Firstname :");
+				firstName=sc.next();
+				System.out.println("Enter Lastname :");
+				lastName=sc.next();
+				System.out.println("Enter city:");
+				city=sc.next();
+				System.out.println("Enter state:");
+				state=sc.next();
+				System.out.println("Enter zipcode:");
+				zipcode=sc.nextInt();
+				System.out.println("Enter mobilenumber");
+				phoneNumber=sc.next();
+				person.add(new Person(firstName, lastName , city, state,zipcode, phoneNumber));
+				System.out.println(person.size());
+			}
+			System.out.println("Person details  are added");
+			System.out.println(" Do you want to save your data ??? ");
+			System.out.println("Press 3  to save ur data ");
+			return person;
+		}
 		
-	}
-
 	@Override
 	public void editPerson() {
 		// TODO Auto-generated method stub

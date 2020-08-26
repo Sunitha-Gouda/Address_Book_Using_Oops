@@ -9,7 +9,7 @@ import com.opencsv.CSVWriter;
 
 public class ReadWrite {
 	public void Writecsv(String Filename,ArrayList<Person> addressbook) throws Throwable {
-		String path="E:\\Newfolder\\AddressBook\\src"+Filename;
+		String path="E:\\Newfolder\\AddressBook\\src\\"+Filename;
 		CSVWriter writer=new CSVWriter(new FileWriter(path));
 		String line1[]= {"FirstName","LastName","City","State","ZipCode","PhoneNumber"};
 		writer.writeNext(line1);
@@ -23,7 +23,7 @@ public class ReadWrite {
 	}
   
 	public ArrayList<Person> Readcsv(String Filename) throws Throwable {
-	   String path="E:\\Newfolder\\AddressBook\\src"+Filename;
+	   String path="E:\\Newfolder\\AddressBook\\src\\"+Filename;
 	   BufferedReader BR=new BufferedReader(new FileReader(path));
 	   ArrayList<Person> person=new ArrayList<Person>();
 	   String line=null;

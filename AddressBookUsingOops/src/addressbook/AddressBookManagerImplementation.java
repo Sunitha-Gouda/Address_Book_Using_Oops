@@ -1,6 +1,9 @@
 package addressbook;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import interfaces.AddressBookManagerInterface;
@@ -23,7 +26,6 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 		System.out.println("Create a  new file with (.csv) extension");
 		String Filename=sc.next();
 		System.out.println("How many contancts you are gonna add to Addressbook????");
-		
 		int numberOfContacts=sc.nextInt();
 		for(int i=0;i<=numberOfContacts;i++) {
 			System.out.println("Enter your Firstname :");
@@ -48,21 +50,41 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 			}
 		}
 			System.out.println("New AddressBook Created");
-			}
+	}
 
-
+	
 	@Override
 	public void openAddressBook() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Following are the addressbook which are present in system");
+		try {
+			File file=new File("E:\\Newfolder\\AddressBook\\src\\");
+			FilenameFilter  filter=new FilenameFilter() {
+				@Override
+				public boolean accept(File file ,String name) {
+					return name.endsWith(".csv");
+			}
+			};
+			File[] files=file.listFiles();
+			for (int i = 0; i < files.length; i++) {
+				System.out.println("\t\t"+files[i].getName());
+			}
+			} catch ( Exception e) {
+			System.out.println(e.getMessage());
+			}
 	}
-
+     
+	
 	@Override
-	public void saveAddressBook() {
-		// TODO Auto-generated method stub
+	public void saveAddressBook( String Filename, ArrayList<Person> saveaddressbook ) {
+		try {
+			RW .Writecsv(Filename, saveaddressbook);
+			} catch (Throwable e ) {
+			e.printStackTrace();
+			}
 		
 	}
 
+	
 	@Override
 	public void saveasAddressBook() {
 		// TODO Auto-generated method stub
