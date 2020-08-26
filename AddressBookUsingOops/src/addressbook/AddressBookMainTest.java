@@ -52,7 +52,7 @@ public class AddressBookMainTest {
 					addressbook=addressBookImplementation.deletePerson(Filename);
 					break;
 				case 4:
-					System.out.println("Four");
+					addressbook=addressBookImplementation.searchPerson(Filename);
 					break;
 				case 5:
 					System.out.println("Five");

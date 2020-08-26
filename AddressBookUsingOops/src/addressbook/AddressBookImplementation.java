@@ -95,6 +95,7 @@ public class AddressBookImplementation  implements AddressBookInterface {
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}
+		System.out.println("size of addreebook before deleting a user = "+delPerson.size());
 		System.out.println("Enter the  phoneNumber to delete person ");
 		String PhoneNumber=sc.next();
 		System.out.println("PhoneNumber=" +PhoneNumber);
@@ -104,15 +105,30 @@ public class AddressBookImplementation  implements AddressBookInterface {
 				delPerson.remove(i);
 			}
 		}
+		System.out.println("size of addreebook after deleting a user = "+delPerson.size());
 		System.out.println("Entered Phonenumber along with data has been Deleted!!!!");
 		return delPerson;
 	}
 	
 
 	@Override
-	public void searchPerson() {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<Person> searchPerson(String Filename)throws Throwable {
+		ArrayList<Person> person=null;
+		try {
+			person=RW.Readcsv(Filename);
+
+			} catch (Throwable e) {
+			e.printStackTrace();
+			}
+		System.out.println("Enter search person details");
+		String search=sc.next();
+		System.out.println("search" +search);
+			for(int i=0;i<person.size();i++) {
+				if(search.equalsIgnoreCase(person.get(i).getPhoneNumber())) {
+					System.out.println(person.get(i));
+				}
+			}
+		return person;
 	}
 
 	@Override
