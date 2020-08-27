@@ -3,7 +3,6 @@ package addressbook;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
-import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,38 +19,20 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 	ArrayList<Person> personlist=new ArrayList<Person>();
 	Person person;
 	ReadWrite RW=new ReadWrite();
-
 	@Override
 	public void newAddressBook() {
 		System.out.println("----Creating  a new file-----");
 		System.out.println("Create a  new file with (.csv) extension");
 		String Filename=sc.next();
-		System.out.println("How many contancts you are gonna add to Addressbook????");
-		int numberOfContacts=sc.nextInt();
-		for(int i=0;i<=numberOfContacts;i++) {
-			System.out.println("Enter your Firstname :");
-			firstName=sc.next();
-			System.out.println("Enter your Lastname :");
-			lastName=sc.next();
-			System.out.println("Enter your city:");
-			city=sc.next();
-			System.out.println("Enter your state:");
-			state=sc.next();
-			System.out.println("Enter area zipcode:");
-			zipcode=sc.nextInt();
-			System.out.println("Enter your mobilenumber");
-			phoneNumber=sc.next();
-			personlist.add(new Person(firstName,lastName,city,state,zipcode,phoneNumber));
-			//Exception 
-			try {
-				RW.Writecsv(Filename, personlist);
+		try {
+			RW.Writecsv(Filename, personlist);
 			}
-			catch (Throwable e) {
+		catch (Throwable e) {
 				e.printStackTrace();
 			}
-		}
 			System.out.println("New AddressBook Created");
 	}
+			
 
 	
 	@Override
@@ -71,6 +52,7 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 	}
      
 	
+	
 	@Override
 	public void saveAddressBook( String Filename, ArrayList<Person> saveaddressbook ) throws FileNotFoundException {
 		try {
@@ -78,20 +60,34 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 			} catch (Throwable e ) {
 			e.printStackTrace();
 			}
-		
 	}
 
-	@Override
-	public void saveasAddressBook(String oldFileName,String newFileName) {
-		// TODO Auto-generated method stub
-	String file1="E:\\Newfolder\\AddressBook\\src\\"+oldFileName;
-	String file2="E:\\Newfolder\\AddressBook\\src\\"+newFileName;
-			File oldName=new File(file1);
-			File newName=new File(file2);
-			if(oldName.renameTo(newName))
-			System.out.println("File renamed and content has been copied");
-	}
 	
+	@Override
+	public void saveasAddressBook() {
+		// TODO Auto-generated method stub
+		String path="E:\\Newfolder\\AddressBook\\src\\";
+		System.out.println("List of AddressBook Present in your system");
+		File f=new File(path);
+		String[] s=f.list();
+		for (String string1 : s) {
+			System.out.println(string1);
+		}
+		System.out.println("Enter the AddressBook name which need to be rename ");
+		String  filename=sc.next();
+		System.out.println("Enter the new Name for your AddressBook");
+		String  newname=sc.next();
+	    File oldFile=new File((path+filename));
+	    File newFile=new File((path+newname));
+			boolean b=oldFile.renameTo(newFile);
+			if (b==true) {
+				System.out.println("File renamed "+filename+" to the "  +newname);
+			}
+			else {
+				System.out.println("File has not Renamed!!!!!Try again !!!!");
+			}
+	}
+
 
 	@Override
 	public void closeAddressBook() {
@@ -102,15 +98,11 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 		Scanner scanner=new Scanner(s);
 		System.out.println("Scanner:"+scanner.nextLine());
 		scanner.close();
-		System.out.println("Closing the window!!!!!");
-		System.out.println("Trying to use scanner"+"Aftr closing.");
-		System.out.println(scanner.nextLine());
 		}
-		catch (Exception e) {
-			System.out.println("Exception thrown:\n" + e);
+		catch ( Exception e) {
+		e.printStackTrace();
 		}
-		return;
-		
+		System.out.println("AddressBook closed");
 	}
 	
 	@Override

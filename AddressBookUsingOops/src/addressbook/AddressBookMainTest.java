@@ -82,7 +82,7 @@ public class AddressBookMainTest {
 				System.out.println("Your Data has been saved in file :"+Filename1);
 				break;
 			case 4:
-				System.out.println("List of Files Present ");
+				/*System.out.println("List of Files Present ");
 				File f=new File("E:\\Newfolder\\AddressBook\\src\\");
 				String[] s=f.list();
 				for (String string1 : s) {
@@ -91,8 +91,8 @@ public class AddressBookMainTest {
 				System.out.println("old  file name");
 				String oldFileName=sc.next();
 				System.out.println("new file  name");
-				String newFileName=sc.next();
-				addressBookManagerImplementation.saveasAddressBook(oldFileName,newFileName);
+				String newFileName=sc.next();*/
+				addressBookManagerImplementation.saveasAddressBook();
 				break;
 			case 5:
 				addressBookManagerImplementation.closeAddressBook();
