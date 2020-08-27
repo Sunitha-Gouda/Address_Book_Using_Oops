@@ -11,18 +11,18 @@ public class AddressBookMainTest {
 		AddressBookImplementation addressBookImplementation=new AddressBookImplementation();
 		Scanner sc=new Scanner (System.in);
 		ArrayList<Person> addressbook=new ArrayList<Person>();
-		ReadWrite RW=new ReadWrite();
-		System.out.println("******Welcome To Address Book Application*****");
+		System.out.println("******     Welcome To Address Book Application     *****");
 		while(true) {
-			System.out.println("\t\t1) Create New Address Book\n"
-								+"\t\t2) Open New Address Book \n"
-								+"\t\t3)  Save Address Book \n"
-								+"\t\t4) Save As Address Book \n"
-								+"\t\t5) Close The Addres Book \n"
-								+"\t\t6) Quit");
+			System.out.println("\t\t________________________________________\n"
+							+"\t\t|\t1) Create New Address Book\t|\n"
+							+"\t\t|\t2) Open Address Book\t\t|\n"
+							+"\t\t|\t3) Save Address Book\t\t|\n"
+							+"\t\t|\t4) Save As Address Book\t\t|\n"
+							+"\t\t|\t5) Close The Addres Book\t|\n"
+							+"\t\t|\t6) Quit Address Book\t\t|\n"
+							+ "\t\t|_______________________________________|\n");
 					
 			System.out.println("Please Enter Your Choice ::");
-			
 			int choiceOption=sc.nextInt();
 			switch(choiceOption) {
 			case 1:
@@ -32,16 +32,19 @@ public class AddressBookMainTest {
 				addressBookManagerImplementation.openAddressBook();
 				System.out.println("Which file do you need to open::");
 				String Filename=sc.next();
-				System.out.println("\t\t1.Add Data\n"
-						+ "\t\t2.edit Data\n"
-						+ "\t\t3.delete Data\n"
-						+ "\t\t4.search Data\n"
-						+ "\t\t5.sort by zip Data\n"
-						+ "\t\t6.sort by name Data\n"
-						+ "\t\t7.display Data\n");
+				System.out.println("\t\t_________________________________________\n"
+						+ "\t\t|\t1.Add Data\t\t\t|\n"
+						+ "\t\t|\t2.edit Data\t\t\t|\n"
+						+ "\t\t|\t3.delete Data\t\t\t|\n"
+						+ "\t\t|\t4.search Data\t\t\t|\n"
+						+ "\t\t|\t5.sort by zip Data\t\t|\n"
+						+ "\t\t|\t6.sort by name Data\t\t|\n"
+						+ "\t\t|\t7.display Data\t\t\t|\n"
+						+ "\t\t|_______________________________________|\n");
 						
 				System.out.println("Enter your choice---");
 				int OpenBook=sc.nextInt();
+				while(true) {
 				switch(OpenBook) {
 				case 1:
 					addressbook=addressBookImplementation.addPerson(Filename);
@@ -65,16 +68,18 @@ public class AddressBookMainTest {
 					addressBookImplementation.display(Filename);
 					break;
 				default :
-					System.out.println("Enter choice correctly!!!");
-					return;
+					System.out.println("\t\t\tWrong data received");
+					break;
+					
 				}
 				break;
+				}
 			case 3:
 				System.out.println("Save  your file before adding details");
 				System.out.println("Give filename  in which you need to save data");
-				Filename=sc.next();
-				addressBookManagerImplementation.saveAddressBook(Filename, addressbook);
-				System.out.println("Your file has been saved ");
+				String Filename1=sc.next();
+				addressBookManagerImplementation.saveAddressBook(Filename1, addressbook);
+				System.out.println("Your Data has been saved in file :"+Filename1);
 				break;
 			case 4:
 				System.out.println("List of Files Present ");
@@ -93,10 +98,10 @@ public class AddressBookMainTest {
 				addressBookManagerImplementation.closeAddressBook();
 				break;
 			case 6:
-				System.out.println("Six");
+				addressBookManagerImplementation.quit();
 				break;
 			default :
-				System.out.println("Invalid choice!!!!!!!");
+				System.out.println("\t\t\tOops Something went wrong!!!!!!!");
 				return;
 				}
 			

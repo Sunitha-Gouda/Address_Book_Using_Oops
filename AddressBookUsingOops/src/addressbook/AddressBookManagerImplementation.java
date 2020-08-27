@@ -1,9 +1,10 @@
 package addressbook;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
+import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 import interfaces.AddressBookManagerInterface;
@@ -54,28 +55,24 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 
 	
 	@Override
-	public void openAddressBook() {
+	public void openAddressBook() throws FileNotFoundException {
 		System.out.println("Following are the addressbook which are present in system");
-		try {
-			File file=new File("E:\\Newfolder\\AddressBook\\src\\");
-			FilenameFilter  filter=new FilenameFilter() {
-				@Override
-				public boolean accept(File file ,String name) {
-					return name.endsWith(".csv");
-			}
-			};
-			File[] files=file.listFiles();
-			for (int i = 0; i < files.length; i++) {
-				System.out.println("\t\t"+files[i].getName());
-			}
-			} catch ( Exception e) {
-			System.out.println(e.getMessage());
-			}
+		File file=new File("E:\\Newfolder\\AddressBook\\src\\");
+		FilenameFilter  filter=new FilenameFilter() {
+			@Override
+			public boolean accept(File file ,String name) {
+				return name.endsWith(".csv");
+		}
+		};
+		File[] files=file.listFiles();
+		for (int i = 0; i < files.length; i++) {
+			System.out.println("\t\t"+files[i].getName());
+		}
 	}
      
 	
 	@Override
-	public void saveAddressBook( String Filename, ArrayList<Person> saveaddressbook ) {
+	public void saveAddressBook( String Filename, ArrayList<Person> saveaddressbook ) throws FileNotFoundException {
 		try {
 			RW .Writecsv(Filename, saveaddressbook);
 			} catch (Throwable e ) {
@@ -113,11 +110,17 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 			System.out.println("Exception thrown:\n" + e);
 		}
 		return;
+		
 	}
 	
 	@Override
 	public void quit() {
 		// TODO Auto-generated method stub
+		System.out.println("please confirm  do u want to exit(Yes/NO)");
+		String exit=sc.next();
+		if(exit.equalsIgnoreCase("Yes"))
+			System.exit(0);
+			return;
 		
 	}
 

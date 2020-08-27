@@ -71,8 +71,8 @@ public class Person {
 	//toString method 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", city=" + city + ", state=" + state
-				+ ", zipcode=" + zipcode + ", phoneNumber=" + phoneNumber + "]";
+		return " \n\tFirstName: " + firstName + " \n\tLastName: " + lastName + " \n\tCity: " + city + 
+				" \n\tState: " + state + "\n\tZipCode: " + zipcode + "\n\tPhoneNumber: " + phoneNumber;
 	}
 
 }
