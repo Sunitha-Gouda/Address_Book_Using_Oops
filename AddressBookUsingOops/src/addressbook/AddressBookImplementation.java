@@ -18,7 +18,7 @@ public class AddressBookImplementation  implements AddressBookInterface {
 		ArrayList<Person> addressBookList=new ArrayList<Person>();
 		Person person;
 		ReadWrite RW=new ReadWrite();
-
+		public String patternPhoneNumber = "^[0-9]{10}";
 		@Override
 		public ArrayList<Person> addPerson(String Filename) {
 			ArrayList<Person> person=null;
@@ -33,16 +33,29 @@ public class AddressBookImplementation  implements AddressBookInterface {
 			for (int i = 0; i < numOfPerson; i++) {
 				System.out.println("Enter Firstname :");
 				firstName=sc.next();
+				
 				System.out.println("Enter Lastname :");
 				lastName=sc.next();
+				
 				System.out.println("Enter city:");
 				city=sc.next();
+				
 				System.out.println("Enter state:");
 				state=sc.next();
+				
 				System.out.println("Enter zipcode:");
 				zipcode=sc.nextInt();
 				System.out.println("Enter mobilenumber");
 				phoneNumber=sc.next();
+				
+				boolean flag = phoneNumber.matches(patternPhoneNumber);
+
+				while (flag == false) {
+					System.out.println("Enter Phone Number with 10 digit between 0-9 :");
+					phoneNumber = sc.next();
+					flag = phoneNumber.matches(patternPhoneNumber);
+				}
+		
 				person.add(new Person(firstName, lastName , city, state,zipcode, phoneNumber));
 				System.out.println(person.size());
 			}
@@ -62,24 +75,32 @@ public class AddressBookImplementation  implements AddressBookInterface {
 			e1.printStackTrace();
 		}
 		System.out.println("Enter PhoneNumber to  edit person details");
-		String search =sc.next();
-		System.out.println("search number::"+search);
+		String searchNumber =sc.next();
+		System.out.println("edit Number::"+searchNumber);
+		
 		for(int i=0; i<editpersondetails.size();i++) {
 		String Number=editpersondetails.get(i).getPhoneNumber();
-		System.out.println("search number::"+Number);
-		if(search.equalsIgnoreCase(Number)) {
+
+		if(searchNumber.equalsIgnoreCase(Number)) {
+		
 			System.out.println("Enter firstname: ");
 			firstName=sc.next();
+			
 			System.out.println("Enter lastname:");
 			lastName=sc.next();
+			
 			System.out.println("Enter city:");
 			city=sc.next();
+			
 			System.out.println("Enter state");
 			state=sc.next();
+			
 			System.out.println("Enter zipcode:");
 			zipcode=sc.nextInt();
+			
 			System.out.println("Enter phoneNumber:");
 			phoneNumber=sc.next();
+			
 			Person edit=editpersondetails.set(i, (new Person(firstName,lastName,city,state,zipcode,phoneNumber)));
 		    System.out.println(edit);
 		    System.out.println(editpersondetails.get(i));
